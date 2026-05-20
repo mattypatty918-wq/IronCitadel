@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.games.td101',
-  appName: 'TD101',
+  appId: 'com.mattypattysapps.nexusdefense',
+  appName: 'Nexus Defense',
   webDir: 'dist'
 };
 
