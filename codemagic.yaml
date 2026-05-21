@@ -1,32 +1,23 @@
-name: Iron Citadel
-description: Strategic tower defense game
-type: ios
-environment:
-  ios: "17.0"
-  node: "18"
+# Codemagic CI/CD for iron-citadel
 workflows:
   ios-workflow:
     name: iOS
     max_build_duration: 60
-    instance_type: mac_mini_m2
-    integrations:
-      app_store_connect: Codemagic
     environment:
       vars:
-        BUNDLE_ID: com.mattypattysapps.ironcitadel
-        XCODE_WORKSPACE: App/App.xcworkspace
-        XCODE_SCHEME: App
+        XCODE_VERSION: "16.0"
+        APP_NAME: "iron-citadel"
+    triggering:
+      branch_patterns:
+        - pattern: master
+          include: true
     scripts:
-      - npm install
-      - npx cap sync ios
-      - cd ios/App && pod install
-      - keychain initialize
-      - app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
-      - keychain add-certificates
-      - xcode-project use-profiles
-      - xcode-project build-ipa --workspace $XCODE_WORKSPACE --scheme $XCODE_SCHEME
+      - git clone https://github.com/mattypatty918-wq/tower-defense-101.git --depth 1
+      - cd tower-defense-101 && git submodule update --init --recursive
+      - cd tower-defense-101 && xcode-project fetch-dependencies --use-cache
+      - cd tower-defense-101 && xcode-project build --workspace  --scheme  --configuration Release
     artifacts:
-      - build/ios/ipa/*.ipa
+      - tower-defense-101/ios/*.ipa
     publishing:
       app_store_connect:
-        auth: integration
+        api_key: Whitefoxes
