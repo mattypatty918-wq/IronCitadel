@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Nexus Defense</string>
-    <string name="title_activity_main">Nexus Defense</string>
-    <string name="package_name">com.mattypattysapps.nexusdefense</string>
-    <string name="custom_url_scheme">com.mattypattysapps.nexusdefense</string>
+    <string name="app_name">Iron Citadel</string>
+    <string name="title_activity_main">Iron Citadel</string>
+    <string name="package_name">com.mattypattysapps.ironcitadel</string>
+    <string name="custom_url_scheme">com.mattypattysapps.ironcitadel</string>
 </resources>
